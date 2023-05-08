@@ -1,0 +1,38 @@
+
+/** not-found page **/
+
+.not-found-container {
+	width: 400px;
+	margin: 4em auto;
+	text-align: center;
+}
+
+.not-found-container h1 {
+	margin-bottom: 2.5em;
+	font-size: 1.6rem;
+	font-weight: 400;
+}
+
+.not-found-link {
+	padding: 0.5em 3em;
+
+	font-weight: 500;
+	font-size: 1.5rem;
+	text-transform: uppercase;
+	text-decoration: none;
+
+	color: white;
+	background-color: var(--tr-black);
+	border-radius: 10px;
+	border: 2px solid black;
+
+	transition: 0.25s ease background-color;
+	cursor: pointer;
+}
+
+.not-found-link:hover {
+	font-weight: 600;
+	color: var(--black);
+	background-color: var(--l-lavender);
+	transition: 0.25s ease background-color;
+}

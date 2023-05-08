@@ -1,0 +1,264 @@
+
+/****** LOGIN-PAGE ******/
+
+.login-page {
+	position: relative;
+	height: 100%;
+	background: linear-gradient(rgb(173, 199, 247), rgba(182, 182, 212, 0.849));
+}
+
+.login-page {
+	--width: 900px;
+	--height: 700px;
+	--top: 20%;
+	--btn-time: 1.40s;
+	--elements-time: 1s;
+}
+
+
+/* login-header */
+
+.login-header-title {
+	width: 100%;
+	min-width: fit-content;
+	margin: 0;
+	padding-bottom: .5rem;
+
+	font-family: 'Saira Condensed', sans-serif;
+	font-size: 4.5rem;
+	text-align: center;
+	
+	color: var(--black);
+	text-shadow: 0.25rem 0.25rem 0.15rem white;
+}
+
+
+/* login-btn */
+
+.login-button {
+	position: absolute;
+	top: calc(var(--top) + (var(--height) / 2) - 45px);
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: 0 auto;
+
+	width: 260px;
+	height: 90px;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 1.25em;
+
+	color: white;
+	background-color: var(--black);
+	border-radius: 80px;
+	border: 1px solid grey;
+
+	transition: all 0.25s ease;
+	cursor: pointer;
+	z-index: 2;
+
+	animation: login-btn var(--btn-time);
+}
+
+@keyframes login-btn {
+	from { opacity: 0; cursor:default; }
+	85% { opacity: 0; cursor: default; }
+	to { opacity: 1; }
+}
+
+.login-button:hover {
+	background-color: black;
+	box-shadow: 0px 0px 12px var(--l-lime);
+	border: 1px solid grey;
+	transition: all 0.25s ease;
+}
+
+.login-text {
+	padding-bottom: 0.15em;
+	font-family: 'Saira Condensed', sans-serif;
+	font-weight: 500;
+	font-size: 2.25rem;
+}
+
+.login-icon {
+	padding: 0.05em;
+	padding-bottom: 0.2em;
+	font-size: 2.5rem;
+}
+
+.tmp-login {
+	position: fixed;
+	top: 0;
+	right: 1rem;
+	opacity: 0.2;
+}
+
+.tmp-login:hover {
+	opacity: 1;
+}
+
+.tmp-login button {
+	position: unset;
+	margin: 1em auto;
+}
+
+
+/* pong */
+
+.login-page::before { 
+	position: absolute;
+	top: var(--top);
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	margin: 0 auto;
+	
+	width: var(--width);
+	height: var(--height);
+
+	border-radius: 10px;
+	border: 4px solid var(--l-lime);
+	background-color: var(--black);
+
+	content: "";
+	z-index: 0;
+
+	animation: pong-bg 1s ease-out;
+}
+
+@keyframes pong-bg {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+
+.fade-anim::before {
+	position: absolute;
+	top: var(--top);
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	margin: 0 auto;
+	
+	width: var(--width);
+	height: var(--height);
+
+	border-radius: 10px;
+	border: 4px solid var(--l-lime);
+	background-color: var(--black);
+
+	content: "";
+	z-index: 0;
+	opacity: 0;
+	animation: fade 2s ease-out;
+}
+
+@keyframes fade {
+	from { opacity: 1; }
+	to { opacity: 0; }
+}
+
+
+/* paddles */
+
+.paddle {
+	position: absolute;
+	width: 20px;
+	height: 140px;
+
+	background-color: lightgrey;
+
+	animation-duration: var(--elements-time);
+	animation-timing-function: ease-out;
+}
+
+.left {
+	top: calc(var(--top) + (var(--height) / 2) - 70px);
+	left: calc(50% - (var(--width) / 2) + 7px);
+	animation-name: paddle-move-top;
+}
+
+.right {
+	top: calc(var(--top) + (var(--height) / 2) - 70px);
+	right: calc(50% - (var(--width) / 2) + 7px);
+	bottom: 0;
+	animation-name: paddle-move-top;
+}
+
+@keyframes paddle-move-top {
+	from { background-color: transparent; transform: translate(0, -300%); }
+	to { transform: translate(0, 0); }
+}
+
+.reverse-paddle-anim {
+	opacity: 0;
+	animation: paddle-move-bottom 1.5s ease-out reverse;
+}
+
+@keyframes paddle-move-bottom {
+	from { opacity: 0; background-color: transparent; transform: translate(0, 300%); }
+	to { opacity: 1; transform: translate(0, 0); }
+}
+
+
+/* ball */
+
+.center {
+	position: absolute;
+	top: calc(var(--top) + (var(--height) / 2) - 15px);
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+
+	width: 30px;
+	height: 30px;
+
+	border-radius: 50%;
+	background-color: lightgray;
+
+	animation: ball var(--elements-time) ease-out;
+}
+
+@keyframes ball {
+	from {
+		top: calc(var(--top) + var(--height));
+		background-color: transparent;
+	}
+	
+	to {
+		top: calc(var(--top) + (var(--height) / 2) - 15px);
+	}
+}
+
+.reverse-ball-anim {
+	width: 30px;
+	height: 30px;
+
+	border-radius: 50%;
+	background-color: lightgray;
+	opacity: 0.35;
+
+	animation: ball-to-top 1.5s ease-out;
+}
+
+@keyframes ball-to-top {
+	from {
+		top: calc(var(--top) + (var(--height) / 2) - 15px);
+		opacity: 1;
+	}
+
+	to {
+		top: var(--top);
+		opacity: 0.35;
+	}
+}
+
+
+@media (max-width: 910px) {
+	.login-page {
+		--width: 90%;
+		--height: 70%;
+	}
+}

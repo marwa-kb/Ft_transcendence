@@ -1,0 +1,153 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider      = "prisma-client-js"
+  // please don't delete this part, otherwise it won't generate models in MacOS
+  binaryTargets = ["native", "linux-musl", "debian-openssl-1.1.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum ChannelType {
+  PUBLIC
+  PRIVATE
+  DM
+}
+
+enum RoleType {
+  OWNER
+  ADMIN
+  USER
+}
+
+enum Status {
+  OFFLINE
+  ONLINE
+  INQUEUE
+  INGAME
+}
+
+// User model
+model User {
+  id       Int    @id @default(autoincrement())
+  authId   Int    @unique
+  username String @unique
+  email    String @unique
+
+  password           String?
+  avatar             String?
+  twoFactorSecret    String?
+  isTwoFactorEnabled Boolean @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  status    Status   @default(OFFLINE)
+  isKnown   Boolean  @default(false)
+
+  // Game
+  wins  Int @default(0)
+  loses Int @default(0)
+
+  gamesLeftPlayer  Game[] @relation(name: "leftPlayerId")
+  gamesRightPlayer Game[] @relation(name: "rightPlayerId")
+
+  // Channel
+  channelsJoined ChannelUser[]
+  channelsOwned  Channel[]
+
+  // Relations between users
+  usersBlocked Int[]
+
+  friends         User[] @relation("friends")
+  friendsRelation User[] @relation("friends")
+
+  @@map("users")
+}
+
+// Game model
+model Game {
+  id       Int      @id @default(autoincrement())
+  gameMode String   @default("")
+  createAt DateTime @default(now())
+
+  leftPlayerName  String @default("")
+  leftPlayerId    Int
+  leftPlayerSocket  String  @default("")
+  leftPlayer      User   @relation(name: "leftPlayerId", fields: [leftPlayerId], references: [authId])
+  rightPlayerName String @default("")
+  rightPlayerId   Int
+  rightPlayerSocket String  @default("")
+  rightPlayer     User   @relation(name: "rightPlayerId", fields: [rightPlayerId], references: [authId])
+
+  winnerId Int?
+  loserId  Int?
+
+  scoreLeftPlayer  Int @default(0)
+  scoreRightPlayer Int @default(0)
+
+  isFinished      Boolean @default(false)
+  hasLeft         Boolean @default(false)
+  leftPlayerMap   Boolean @default(false)
+  rightPlayerMap  Boolean @default(false)
+  leftPlayerMode  String  @default("")
+  rightPlayerMode String  @default("")
+
+  initialBallSpeed Int?
+
+  @@map("games")
+}
+
+model Message {
+  id           Int    @unique @default(autoincrement())
+  fromId       Int
+  toId         Int
+  fromUsername String
+
+  dm Boolean
+
+  content String
+
+  createdAt DateTime @default(now())
+
+  @@map("messages")
+}
+
+model ChannelUser {
+  channel   Channel @relation(fields: [channelId], references: [id], onDelete: Cascade)
+  channelId Int
+  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    Int
+
+  role    RoleType @default(USER)
+  hasLeft Boolean  @default(false)
+  banEnd  DateTime @default(now())
+  muteEnd DateTime @default(now())
+
+  createdAt DateTime @default(now())
+
+  @@id([channelId, userId])
+  @@map("channelUsers")
+}
+
+model Channel {
+  id       Int         @id @default(autoincrement())
+  name     String      @unique
+  type     ChannelType @default(PUBLIC) // public/private/protected/dm?
+  password String?
+
+  owner   User?         @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  ownerId Int?
+  users   ChannelUser[]
+
+  createdAt DateTime @default(now())
+
+  @@map("channels")
+}
+
+// Friend model
+// Moddel Match
+// Model Stats (win/lose/ ladder lvl/ achiev etc) => User profile

@@ -1,0 +1,633 @@
+
+/****** GAME PAGE ******/
+
+.game-main {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+
+/****** JOIN/LEAVE QUEUE ******/
+
+.join-queue-container {
+	position: relative;
+	width: 90vw;
+	height: 75vw;
+	max-width: 1000px;
+	max-height: 750px;
+	margin: 6rem auto;
+
+	border-radius: 10px;
+	border: 4px solid var(--l-lime);
+	background-color: rgba(31, 31, 31, 0.42);
+}
+
+.join-queue-anim-container {
+	position: relative;
+	width: 400px;
+	top: 28%;
+	margin: auto;
+	display: flex;
+}
+
+.arrow {
+    position: absolute;
+	left: unset;
+    right: .35rem;
+    transform: translate(-50%, -50%);
+    transform: rotate(90deg);
+}
+
+.arrow2 {
+	left: 0;
+	right: unset;
+    transform: rotate(270deg);
+}
+
+.arrow span {
+    display: block;
+    width: 2rem;
+    height: 2rem;
+    margin: -10px;
+
+    border-bottom: 5px solid var(--l-lime);
+    border-right: 5px solid var(--l-lime);
+
+    transform: rotate(45deg);
+    animation: animate 2s infinite;
+}
+
+.arrow span:nth-child(2) {
+    animation-delay: -0.2s;
+}
+
+.arrow span:nth-child(3) {
+    animation-delay: -0.4s;
+}
+
+@keyframes animate {
+    0% {
+        opacity: 0;
+        transform: rotate(45deg) translate(-20px, -20px);
+    }
+    50% { opacity: 1; }
+    100% {
+        opacity: 0;
+        transform: rotate(45deg) translate(20px, 20px);
+    }
+}
+
+.join-queue-container-txt {
+	position: absolute;
+	width: 700px;
+	max-width: 90%;
+	top: 50%;
+	left: 0;
+	right: 0;
+	margin: auto;
+
+	font-size: 1.5rem;
+	font-weight: 400;
+	line-height: 2.5rem;
+	text-align: center;
+
+	color: black;
+}
+
+.join-queue-btn,
+.leave-queue-btn {
+	padding: 1em 2em;
+	margin: auto;
+
+	font-family: 'Rajdhani', sans-serif;
+	font-size: 1.35em;
+	font-weight: 600;
+	text-transform: uppercase;
+
+	color: white;
+	border: none;
+	border-radius: 10px;
+	background-color: var(--tr-black);
+
+	cursor: pointer;
+}
+
+.leave-queue-btn {
+	margin:3.25em auto;
+	background-color: rgb(38, 38, 38);
+	box-shadow: 0px 0px 2px var(--tr-lavender);
+}
+
+.join-queue-btn:hover,
+.leave-queue-btn:hover {
+	background-color: black;
+}
+
+
+/****** WAITING PAGE ******/
+
+.wait-container {
+	position: relative;
+	width: 90vw;
+	height: 75vw;
+	max-width: 1000px;
+	max-height: 750px;
+	margin: 6rem auto;
+}
+
+.wait-pong-container {
+	width: 100%;
+	height: 100%;
+	
+	border-radius: 10px;
+	border: 4px solid var(--l-lime);
+	background-color: var(--black);
+}
+
+.first-wait .wait-pong-container {
+	animation: set-bg 2s ease;
+}
+
+@keyframes set-bg {
+	0%	 { background: rgba(31, 31, 31, 0.42); }
+	100% { background: var(--black); }
+}
+
+.wait-anim-container {
+	position: absolute;
+	top: 6.5em;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.wait-anim-container h3 {
+	margin: 0;
+	font-size: 2rem;
+	font-weight: 700;
+	text-align: center;
+	color: white;
+}
+
+.lds-ellipsis {
+	position: relative;
+	width: 80px;
+	height: 80px;
+}
+
+.lds-ellipsis div {
+	position: absolute;
+	top: 33px;
+	width: 13px;
+	height: 13px;
+	border-radius: 50%;
+	background: #fff;
+	animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+
+.lds-ellipsis div:nth-child(1) {
+	left: 8px;
+	animation: lds-ellipsis1 0.8s infinite;
+}
+	
+.lds-ellipsis div:nth-child(2) {
+	left: 8px;
+	animation: lds-ellipsis2 0.8s infinite;
+}
+	
+.lds-ellipsis div:nth-child(3) {
+	left: 32px;
+	animation: lds-ellipsis2 0.8s infinite;
+}
+	
+.lds-ellipsis div:nth-child(4) {
+	left: 56px;
+	animation: lds-ellipsis3 0.8s infinite;
+}
+	
+@keyframes lds-ellipsis1 {
+	0%	 { transform: scale(0); }
+	100% { transform: scale(1); }
+}
+	
+@keyframes lds-ellipsis3 {
+	0%	 { transform: scale(1); }
+	100% { transform: scale(0); }
+}
+	
+@keyframes lds-ellipsis2 {
+	0%	 { transform: translate(0, 0); }
+	100% { transform: translate(24px, 0); }
+}
+
+
+/****** PONG PAGE ******/
+
+/* game page not found */
+
+.game-page-not-found {
+	display: flex;
+	flex-direction: column;
+	justify-self: center;
+	gap: 1.5em;
+}
+
+.game-page-not-found h1 {
+	margin: 0 0 1rem !important;
+}
+
+.game-page-not-found .not-found-link {
+	margin-top: 1rem;
+}
+
+.game-page-leave {
+	gap: 1.5em;
+}
+
+.game-page-leave h1 {
+	margin: 0 !important;
+	font-size: 1.75rem !important;
+	font-weight: 500 !important;
+	text-transform: uppercase;
+}
+
+.game-page-leave h2 {
+	margin: 0 0 1rem !important;
+	font-weight: 400 !important;
+}
+
+
+/* map select */
+
+.map-select-container {
+	position: relative;
+	width: 90vw;
+	height: 75vw;
+	max-width: 1000px;
+	max-height: 750px;
+	margin: 6rem auto;
+}
+
+.match-found {
+	position: absolute;
+	top: 7em;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+}
+
+.match-found-txt {
+	margin: 1rem;
+	font-size: 2rem;
+	font-weight: 700;
+	text-align: center;
+	color: white;
+}
+
+.map-selection {
+	position: absolute;
+	top: 2.85em;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1em;
+}
+
+.select-map-txt {
+	margin: 1rem;
+	font-size: 2rem;
+	font-weight: 700;
+	color: white;
+}
+
+.map-select-container button {
+	width: 270px;
+	padding: 1rem 1.5rem;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 1em;
+
+	font-family: 'Rajdhani', sans-serif;
+	font-size: 1.35rem;
+	font-weight: 600;
+
+	color: var(--black);
+	background-color: var(--d-lavender);
+	border-radius: 4px;
+	border: 2px solid white;
+
+	cursor: pointer;
+	transition: all 0.2s ease-in-out;
+}
+
+.map-select-container button:hover {
+	font-weight: 700;
+	color: var(--black);
+	background-color: white;
+}
+
+.img-map {
+	width: 110px;
+	margin-left: auto;
+	border: 1px solid black;
+}
+
+.mode-details {
+	width: 110px;
+	margin-left: auto;
+
+	font-size: 1.1rem;
+	font-weight: 400;
+
+	display: flex;
+	flex-direction: column;
+	gap: .35em;
+
+	color: black;
+}
+
+.mode-details .mode-separator {
+	width: 100%;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+
+/* background */
+
+.play-main {
+	width: 100%;
+	height: 100%;
+	min-height: 800px;
+
+	background: var(--d-black);
+	animation: change-bgcolor-anim 5s ease-in-out;
+}
+
+@keyframes change-bgcolor-anim {
+	0%	{ background-color: transparent; }
+	100% { background-color: var(--d-black); }
+}
+
+
+/* players containers */
+
+.two-players-container {
+	position: relative;
+	position: fixed;
+	width: 100%;
+	height: 600px;
+	max-width: 1500px;
+	top: 12rem;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: 0 auto;
+	z-index: 4;
+}
+
+.player-container {
+	position: absolute;
+	width: 250px;
+	height: min-content;
+	padding-bottom: 2em;
+	top: 0;
+	bottom: 0;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	color: white;
+	border-radius: 10px;
+	opacity: 0.8;
+}
+
+
+/* each player and its corresponding animation */
+
+.player-one {
+	right: 0;
+	animation: move-right-anim 3s ease-in-out;
+}
+
+.player-two {
+	left: 0;
+	animation: move-left-anim 3s ease-in-out;
+}
+
+@keyframes move-left-anim {
+	0%	{ left:28%; top:22%; opacity:1; }
+	25%	{ left:28%; top:22%; }
+	50%	{ left:28%; }
+	100% { left: 0; }
+}
+
+@keyframes move-right-anim {
+	0%	{ right:28%; top:22%; opacity:1; }
+	25%	{ right:28%; top:22%; }
+	50%	{ right:28%; }
+	100% { right:0; }
+}
+
+
+/* player containers content and animations */
+
+.player-container h3 {
+	margin-bottom: 0.5em;
+
+	font-size: 1.4rem;
+	font-weight: 500;
+	
+	animation: decrease-txt-anim 3s ease-in-out;
+}
+
+@keyframes decrease-txt-anim {
+	0%	{ font-size: 1.8rem; }
+	50%	{ font-size: 1.8rem; }
+	100% { font-size: 1.4rem; }
+}
+
+.player-container img {
+	width: 110px;
+	height: 110px;
+
+	background-color: white;
+	border: 2px solid white;
+	border-radius: 50%;
+
+	animation: decrease-img-anim 3s ease-in-out;
+}
+
+@keyframes decrease-img-anim {
+	0%	{ width: 140px; height: 140px; }
+	50%	{ width: 140px; height: 140px; }
+	100% { width: 110px; height: 110px; }
+}
+
+
+/* pong container: canvas, text and animation */
+
+.pong-container {
+	position: relative;
+	width: 90%;
+	max-width: 1000px;
+	margin: 6rem auto;
+}
+
+@keyframes disappear-anim {
+	0% { color:white; }
+	100% { color:transparent; }
+}
+
+.canvas-container {
+	position: relative;
+	width: 100%;
+	object-fit: contain;
+	z-index: 1;
+
+	border-radius: 10px;
+	border: 4px solid var(--l-lime);
+	background-color: var(--black);
+}
+
+
+
+/****** MEDIA QUERIES ******/
+
+@media (max-width: 1310px) {
+	.wait-container,
+	.map-select-container,
+	.join-queue-container {
+		margin: 11rem auto;
+	}
+
+	.play-main {
+		animation-duration: 5s;
+	}
+
+	.two-players-container {
+		position: unset;
+		width: 70%;
+		height: fit-content;
+		margin: 3em auto 1.5em;
+
+		display: flex;
+		justify-content: center;
+		gap: 15em;
+	}
+
+	.player-container {
+		position: unset;
+		margin: 0 auto;
+		padding: 0.5em;
+
+		flex-direction: row;
+		justify-content: center;
+		gap: 0.75em;
+		
+		opacity: 0.9;
+	}
+
+	.player-one {
+		animation: slide-left-anim 3s ease-out;
+	}
+
+	.player-two {
+		flex-direction: row-reverse;
+		animation: slide-right-anim 3s ease-out;
+	}
+
+	@keyframes slide-left-anim {
+		from { transform: translate(70%, 0); }
+		to	 { transform: translate(0); }
+	}
+
+	@keyframes slide-right-anim {
+		from { transform: translate(-70%, 0); }
+		to   { transform: translate(0); }
+	}
+
+	.player-container h3 {
+		margin: 0;
+		animation: none;
+	}
+
+	.player-container img {
+		width: 40px;
+		height: 40px;
+
+		animation: disappear-img-anim 2s ease-in-out;
+	}
+
+	@keyframes disappear-img-anim {
+		0% { width:80px; height:80px; }
+		100% { width:40px; height:40px; }
+	}
+
+	.pong-container {
+		margin: auto;
+	}
+
+	@keyframes disappear-txt-anim2 {
+		0% { color: white; }
+		90% { color: white; }
+		100% { color: transparent; }		
+	}
+}
+
+
+@media (max-width: 900px) {
+	.join-queue-container-txt {
+		margin-top: 1em;
+		font-size: 1.25rem;
+		line-height: 1.2em;
+	}
+
+	.select-map-txt {
+		font-size: 1.25rem;
+	}
+
+	.map-selection {
+		top: 1.5em;
+	}
+
+	.map-select-container button {
+		display: unset;
+		padding: 0;
+		width: 100px;
+		height: 75px;
+		font-size: 0;
+		gap: 0;
+	}
+	
+	.img-map {
+		width: 60px;
+		margin: auto;
+		padding: 0;
+	}
+	
+	.map-selection .mode-btn {
+		font-size: 1.1rem;
+		text-align: center;
+		padding: 0;
+	}
+
+	.map-selection .mode-details {
+		display: none;
+		margin: unset;
+	}
+}

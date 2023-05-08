@@ -1,0 +1,408 @@
+
+/****** HOME-MAIN ******/
+
+.home-main {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+}
+
+
+/* welcome-msg */
+
+.welcome-msg {
+	width: 100%;
+	margin: 2rem auto 0;
+
+	text-align: center;
+	background: radial-gradient(var(--l-lavender), transparent 90%);
+}
+
+.horizontal-line {
+	width: 100%;
+	height: 5px;
+	background: radial-gradient(rgb(215, 220, 253), transparent 60%);
+}
+
+.welcome-msg h1 {
+	margin-top: .5rem;
+	margin-bottom: 0;
+
+	font-family: 'Saira Condensed';
+	font-size: 1.25rem;
+	font-weight: 100;
+	letter-spacing: 3px;
+}
+
+.welcome-msg span {
+	margin-bottom: 0.55rem;
+	display: block;
+	
+	font-size: 2.55rem;
+	font-weight: 400;
+	letter-spacing: 4px;
+
+	text-shadow: 0px 0px 5px var(--lavender);
+}
+
+
+/* main-boxes-container */
+
+.main-boxes-container {
+	margin-top: 0;
+	margin-bottom: 5rem;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 3rem;
+}
+
+.home-main .ball-span {
+	margin: auto;
+	background-color: var(--lavender);
+	box-shadow: 0px 0px 10px var(--lavender);
+}
+
+
+/* main-box */
+
+.main-box {
+	width: 80%;
+	min-height: 300px;
+	max-width: 1200px;
+	
+	text-align: center;
+
+	border-radius: 10px;
+	border: 1px solid var(--lavender);
+	box-shadow: 0px 0px 10px var(--lavender);
+	background: rgba(255, 255, 255, 0.5);
+}
+
+.main-box h2 {
+	width: 100%;
+	margin: 0.75em 0 1.5em;
+
+	line-height: 3.5rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+    text-align: center;
+
+	border-top: 1px solid var(--lavender);
+	border-bottom: 1px solid var(--lavender);
+	background: var(--l-lavender);
+}
+
+
+/* podium */
+
+.empty-ranking,
+.empty-games {
+	width: 250px;
+	margin: 4em auto;
+	padding: 1em;
+
+	font-weight: 200;
+	border-radius: 6px;
+	box-shadow: 0px 0px 1px lightgrey;
+}
+
+.podium-container {
+	width: 60%;
+	max-height: 800px;
+	margin: 3em auto 3em;
+
+	display: flex;
+	align-items: end;
+	justify-content: center;
+	gap: 0.5em;
+
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-image: radial-gradient(black 70%, transparent) 1;
+}
+
+.podium-item {
+	width: 120px;
+	min-width: 120px;
+}
+
+.podium-info {
+	margin-bottom: 1em;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.4em;
+}
+
+.podium-name {
+	max-width: 120px;
+	overflow-x: hidden;
+	text-overflow: ellipsis;
+}
+
+.podium-name,
+.podium-avatar,
+.podium-score {
+	margin: 0;
+}
+
+.podium-avatar {
+	width: 50px;
+	height: 50px;
+	border: 1px solid black;
+	border-radius: 50%;
+}
+
+.podium-score,
+.rank-score {
+	display: flex;
+	justify-content: center;
+	gap: .5em;
+}
+
+.podium-score span:first-of-type,
+.rank-score span:first-of-type { color: var(--win-green); }
+.podium-score span:last-of-type,
+.rank-score span:last-of-type { color: var(--lose-red); }
+
+.podium-1 { order: 2; }
+.podium-2 { order: 1; }
+.podium-3 { order: 3; }
+
+.podium-color {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	
+	border-top-right-radius: 10px;
+	border-top-left-radius: 10px;
+	border: 1px solid var(--black);
+	border-bottom: none;
+	box-shadow: 3px 0px 2px lightgrey;
+	background: linear-gradient(0deg, rgba(200, 199, 199, 0.404), transparent);
+	background-color: whitesmoke;
+	opacity: 0.9;
+}
+
+.podium-1 .podium-color {
+	height: 200px;
+	align-items: unset;
+}
+
+.podium-2 .podium-color {
+	height: 110px;
+}
+
+.podium-3 .podium-color {
+	height: 70px;
+}
+
+.podium-number,
+.rank-number {
+	font-size: 2.5rem;
+	color: var(--black);
+	text-shadow: 2px 2px 0px white;
+}
+
+
+/* rank-cards */
+
+.rank-cards-container {
+	width: 90%;
+	margin: 1em auto 3.5em;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 0.65em;
+}
+
+.rank-card {
+	width: 310px;
+	padding: 1em;
+
+	display: grid;
+	grid-template: auto / 40px 2fr 1fr;
+	gap: 1em;
+
+	background-color: rgb(238, 238, 238);
+	border: 1px solid rgb(113, 113, 113);
+	box-shadow: 2px 2px 2px lightgrey;
+	border-radius: 6px;
+}
+
+.rank-number,
+.rank-avatar,
+.rank-name,
+.rank-score {
+	margin: auto;
+}
+
+.rank-number {
+	font-size: 1.75rem;
+}
+
+.rank-info {
+	margin-right: auto;
+	display: flex;
+	gap: .75em;
+	overflow-x: hidden;
+}
+
+.rank-avatar {
+	width: 40px;
+	height: 40px;
+	border: 1px solid black;
+	border-radius: 50%;
+}
+
+.rank-name,
+.podium-name {
+	font-weight: 600;
+	font-size: 1.15rem;
+}
+
+.rank-name {
+	max-width: 120px;
+	overflow-x: hidden;
+	text-overflow: ellipsis;
+}
+
+
+/* recent-games*/
+
+.recent-games-container {
+	margin: 2em;
+	max-height: 700px;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1em;
+
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.recent-game-card {
+	width: 95%;
+	padding: 1.5em;
+
+	display: grid;
+	grid-template-columns: auto 2fr 50px 50px 50px 2fr auto;
+	gap: 0.5em;
+
+	background: radial-gradient(rgba(211, 211, 211, 0.218), transparent);
+	border-top: 1px solid lightgrey;
+	border-bottom: 1px solid lightgrey;
+}
+
+.player-info {
+	width: 70%;
+	margin: 0 auto;
+
+	display: flex;
+	align-items: center;
+	gap: 1em;
+}
+
+.recent-game-card .player-info:first-of-type {
+	grid-column: 2;
+	justify-content: left;
+}
+
+.recent-game-card .player-info:last-of-type {
+	grid-column: 6;
+	justify-content: right;
+}
+
+.player-avatar {
+	width: 40px;
+	min-width: 40px;
+	height: 40px;
+	margin: 0;
+
+	border: 1px solid black;
+	border-radius: 50%;
+	opacity: 0.8;
+}
+
+.player-name {
+	margin: 0;
+	font-size: 1.25rem;
+	font-weight: 500;
+	overflow: hidden;
+}
+
+.player-score,
+.hyphen {
+	margin: auto;
+	font-size: 1.25rem;
+	font-weight: 400;
+}
+
+.winner {
+	font-size: 1.35rem;
+	font-weight: 700;
+	opacity: 1;
+}
+
+.show-more-btn {
+	margin-top: 0.5em;
+	padding: 0.5em 1em;
+
+	align-self: center;
+
+	font-family: 'Rajdhani', sans-serif;
+	font-weight: 600;
+	font-size: 1rem;
+	text-transform: uppercase;
+
+	color: white;
+	background-color: var(--tr-black);
+	border-radius: 10px;
+	border: none;
+
+	cursor: pointer;
+}
+
+.show-more-btn:hover {
+	background-color: black;
+}
+
+.btn {
+	padding: 10px;
+	background-color: #f5f5f5;
+	border: none;
+	border-radius: 5px;
+	font-size: 16px;
+	font-weight: bold;
+	cursor: pointer;
+	margin-bottom: 10px;
+	color: #333;
+	text-decoration: none;
+	display: inline-block;
+	width: 100%;
+	text-align: center;
+  }
+  
+.btn:hover {
+	background-color: #e5e5e5;
+}
+
+
+
+/****** MEDIA-QUERIES ******/
+
+@media (max-width: 840px) {
+	.welcome-msg h1 { font-size: 1rem; }
+	.welcome-msg span { font-size: 1.75rem; }
+
+	.main-box { width: 92%; }
+
+	.player-name { display: none; }
+}

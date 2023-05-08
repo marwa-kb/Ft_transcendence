@@ -1,0 +1,77 @@
+
+.popup * {
+	font-family: 'Rajdhani', sans-serif;
+	color: rgb(31, 31, 31);
+}
+
+.popup-txt {
+	margin: .75rem 1rem 1.75rem;
+	font-family: 'Rajdhani', sans-serif;
+	font-size: 1.55rem;
+	font-weight: 400;
+	text-align: center;
+}
+
+.popup strong {
+	font-weight: 600;
+}
+
+.btns-container {
+	margin-top: .6em;
+	display: flex;
+	justify-content: center;
+	gap: 1em;
+}
+
+.btns-container button {
+	width: 100px;
+	padding: .25em .5em;
+
+	font-family: 'Rajdhani', sans-serif;
+	font-size: 1.25rem;
+	text-transform: uppercase;
+
+	color: black;
+	border-radius: 20px;
+	background: rgb(161, 161, 161);
+
+	cursor: pointer;
+	transition: all 0.15s ease;
+}
+
+.btns-container button:hover {
+	font-weight: 600;
+	color: rgb(31, 31, 31);
+	transition: all 0.15s ease;
+}
+
+.btns-container button:first-of-type:hover {
+	background: rgba(143, 241, 154, 0.8);
+}
+
+.btns-container button:last-of-type:hover {
+	background: rgba(253, 108, 108, 0.83);
+}
+
+.popup-content .popup-block-btn {
+	width: 100px;
+	margin: 1.5rem 1rem 1rem;
+	padding: .25em .5em;
+
+	font-family: 'Rajdhani', sans-serif;
+	font-size: 1.15rem;
+	text-transform: uppercase;
+
+	color: rgb(70, 70, 70);
+	border-radius: 20px;
+	background-color: rgb(227, 226, 226);
+
+	cursor: pointer;
+	transition: all 0.15s ease;
+}
+
+.popup-content .popup-block-btn:hover {
+	font-weight: 600;
+	color: white;
+	background-color: rgb(31, 31, 31);
+}

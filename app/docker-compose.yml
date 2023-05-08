@@ -1,0 +1,59 @@
+version: "3.9"
+services:
+  frontend:
+    container_name: frontend
+    build:
+      dockerfile: Dockerfile
+      context: ./frontend
+      target: ${NODE_ENV}
+      args:
+        - "NODE_ENV=${NODE_ENV}"
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - 3003:3003
+    volumes:
+      - "./frontend:/node/app:delegated" # performance improvement for files on mac
+      - "/node/app/node_modules" # Anonymous volume to hide local node_modules
+    depends_on:
+      - postgres
+      - backend
+  backend:
+    container_name: backend
+    build:
+      dockerfile: Dockerfile
+      context: ./backend
+      target: ${NODE_ENV}
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - 3000:3000 # Backend port
+      # - 5555:5555 # Prisma studio port
+      # - 9229:9229 # Backend debugging port
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:${POSTGRES_PORT}/${POSTGRES_DB}?schema=public&connect_timeout=300 #hostname is not localhost, inside of docker it's postgres
+    volumes:
+      - "./backend:/usr/src/app"
+      - "/usr/src/app/node_modules"
+    command: bash -c "npx prisma db push --force-reset && npx prisma generate && npm run start:dev"
+    # command: bash -c "npx prisma db push --force-reset && npx prisma generate && npm run start:dev & npx prisma studio"
+    depends_on:
+      postgres:
+        condition: service_healthy
+  postgres:
+    container_name: postgres
+    image: postgres
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - docker-nest-postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+volumes:
+  docker-nest-postgres:

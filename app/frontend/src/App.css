@@ -1,0 +1,46 @@
+
+/** css variables **/
+
+#root {
+	--black: rgb(31, 31, 31);
+	--grey: rgb(70, 70, 70);
+	--green: rgb(143, 241, 154);
+	--lavender: #e3e9fe;
+	--red: rgb(253, 100, 100);
+
+	--d-black: rgb(20, 20, 20);
+	--d-lavender: #c1cbfa;
+
+	--tr-white: rgba(255, 255, 255, 0.8);
+	--tr-black: rgba(31, 31, 31, 0.95);
+	--tr-green: rgba(143, 241, 154, 0.265);
+	--tr-lavender: #ecf0ffb1;
+	--tr-lime: #e6fbb585;
+	--tr2-lime: #e6fbb548;
+
+
+	--l-lime: #e6fbb5;
+	--l-green: #a1efa5;
+	--l-lavender: #ecf0ff;
+	--l-grey: rgb(189, 189, 189);
+
+	--win-green: rgb(128, 206, 128);
+	--lose-red: rgb(222, 119, 119);
+}
+
+
+/** other **/
+
+#root {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+
+	display: flex;
+	flex-direction: column;
+
+	font-family: 'Rajdhani', sans-serif;
+
+	color: var(--black);
+	background: linear-gradient(#d0d6efa2, white);
+}

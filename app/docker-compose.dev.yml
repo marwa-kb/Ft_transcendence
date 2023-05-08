@@ -1,0 +1,64 @@
+version: "3.9"
+services:
+  frontend:
+    container_name: frontend
+    build:
+      dockerfile: Dockerfile
+      context: ./frontend
+      target: production
+      args:
+        - "NODE_ENV=production"
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - 3003:80
+    depends_on:
+      - postgres
+      - backend
+  backend:    
+    container_name: backend
+    build:
+      dockerfile: Dockerfile
+      context: ./backend
+      target: production
+      args:
+        - "NODE_ENV=production"
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - 3000:3000
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:${POSTGRES_PORT}/${POSTGRES_DB}?schema=public&connect_timeout=300
+    depends_on:
+      postgres:
+        condition: service_healthy
+  postgres:
+    container_name: postgres
+    user: ${POSTGRES_USER}
+    image: postgres
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - docker-nest-postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+      timeout: 5s
+      retries: 5
+volumes:
+  docker-nest-postgres:
+
+# remove any containers
+# docker rm --force $(docker ps -a -q)
+
+# remove any images
+# docker rmi -f $(docker images -a -q)
+
+# remove any volumes
+# docker volume rm --force $(docker volume ls -q)
+
+#How to check volume types in all containers?
+# docker-compose -f ./app/docker-compose.prod.yml config | grep -A 1 "volumes"
