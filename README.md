@@ -1,43 +1,18 @@
 # ft_transcendence
 
-#### About dockerize
+### In this 42 project, we had to create a whole website. In a group of 5 people, we used NestJS as backend, ReactJS as frontend, and PostgreSQL as database.
+> Thanks to your website, users will play Pong with others. You will provide a nice user interface, a chat, and real-time multiplayer online games!
 
-(This is temp information, probably delete when everybody get used to it or don't even use it, lol)
+#### For this project, I was in charge of the frontend so I had to learn HTML, CSS, Javascript/Typescript and ReactJS.  
+_Login page_
+![Login page](https://github.com/marwa-kb/Ft_transcendence/assets/68017133/8165e6f5-9ac8-418c-919b-06534080babf)
 
-I only tested in MacOS, school Linux dump. I can't say about Windows or dual boot, etc.
+_User settings_
+![2fa](https://github.com/marwa-kb/Ft_transcendence/assets/68017133/51c7874a-2235-4e51-99d6-7100ef2aa082)
 
-We have 3 docker containers: backend, frontend, db.
-Currently we use it in the development stage. But I added a production build as well.
+_Matchmaking_
+![Matchmaking](https://github.com/marwa-kb/Ft_transcendence/assets/68017133/a6cee5e6-86ec-4c1c-b88a-a6d5d5384ffb)
 
-## Usage
+_Game win_
+![Game win](https://github.com/marwa-kb/Ft_transcendence/assets/68017133/27d79168-f97a-4082-843e-930bd1cf45ce)
 
-#### 0. Prod version
-```python
-./prod_up.sh
-```
-### For development environment
-#### 1. Start the app
-The script is running ```npm i``` in frontend and backend, then executes ```docker compose up -d```.
-```python
-./start.sh
-```
-#### 2. Debugging backend: there is 2 possibilities:
-    
-- Debug in VScode, execute 
-  - ```python
-    docker logs -f backend
-    ```
-
-- Use ```chrome://inspect``` in browser. I opened 1 port debugging : ```9229```. [Here](https://blog.risingstack.com/how-to-debug-a-node-js-app-in-a-docker-container/) is the information how to set it up.
-(I'm not an expert in this so I use first option, lol)
-
-#### 3. Debugging frontend:
-- Debug in VScode, execute 
-  - ```python
-    docker logs -f frontend
-    ```
-#### 4. Prisma studio: 
-As previous : ```http://localhost:5555```
-
-#### 5. Lastly, if I don't wanna use Docker?
-You can use it as previous without any docker containers, but you need to execute many commands as previous (npm, npx, etc)😊
