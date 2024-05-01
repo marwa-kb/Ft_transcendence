@@ -1,6 +1,6 @@
 # ft_transcendence
 
-### In this 42 project, we had to create a whole website in a group of 5 people. We used NestJS as backend, ReactJS as frontend, and PostgreSQL as database.
+### In this 42 project, we had to create a whole website in a group of 5 people. We used NestJS for the backend, ReactJS for the frontend, and PostgreSQL as database.
 > Thanks to your website, users will play Pong with others. You will provide a nice user interface, a chat, and real-time multiplayer online games!
 
 #### For this project, I was in charge of the frontend so I had to learn HTML, CSS, Javascript/Typescript and ReactJS.  
